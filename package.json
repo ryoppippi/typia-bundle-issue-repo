@@ -1,0 +1,23 @@
+{
+  "name": "typia-bundle",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "prepare": "ts-patch install && typia patch",
+    "build": "npm run build:typia && npm run build:bun",
+    "build:typia": "npx typia generate --input ./src --output ./generated --project tsconfig.json",
+    "build:bun": "bun build --format esm --input ./generated/index.ts --outdir ./dist"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "ts-node": "^10.9.2",
+    "ts-patch": "^3.1.2",
+    "typescript": "^5.4.5",
+    "typia": "^6.0.4"
+  }
+}
