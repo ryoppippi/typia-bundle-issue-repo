@@ -4,12 +4,15 @@
   "type": "module",
   "scripts": {
     "prepare": "ts-patch install && typia patch",
-    "build": "npm run build:typia && npm run build:bun",
+    "build": "run-s build:*",
     "build:typia": "npx typia generate --input ./src --output ./generated --project tsconfig.json",
-    "build:bun": "bun build --format esm --input ./generated/index.ts --outdir ./dist"
+    "build:bun": "bun build --input ./generated/index.ts --outdir ./dist ",
+    "build:bun-minfy": "bun build --input ./generated/index.ts --outdir ./dist_minify --minify"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "npm-run-all2": "^6.2.0",
+    "typia": "git+https://github.com/ryoppippi/typia#eaa64326a5f237f6a96b2ea13cb6002239126184"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
@@ -17,7 +20,7 @@
   "dependencies": {
     "ts-node": "^10.9.2",
     "ts-patch": "^3.1.2",
-    "typescript": "^5.4.5",
-    "typia": "^6.0.4"
+    "tsx": "",
+    "typescript": "^5.4.5"
   }
 }
